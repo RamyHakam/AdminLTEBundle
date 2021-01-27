@@ -31,18 +31,18 @@ class Configuration implements ConfigurationInterface
             $rootNode = $treeBuilder->getRootNode();
         } else {
             // BC layer for symfony/config 4.1 and older
-            $rootNode = $treeBuilder->root('scheduler');
+            $rootNode = $treeBuilder->root('admin_lte');
         }
 
         $rootNode
             ->children()
-                ->append($this->getOptionsConfig())
-                ->append($this->getControlSidebarConfig())
-                ->append($this->getThemeConfig())
-                ->append($this->getKnpMenuConfig())
-                ->append($this->getRouteAliasesConfig())
+            ->append($this->getOptionsConfig())
+            ->append($this->getControlSidebarConfig())
+            ->append($this->getThemeConfig())
+            ->append($this->getKnpMenuConfig())
+            ->append($this->getRouteAliasesConfig())
             ->end()
-        ->end();
+            ->end();
 
         return $treeBuilder;
     }
@@ -51,61 +51,61 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder('routes');
         /** @var ArrayNodeDefinition $rootNode */
-        $rootNode = $treeBuilder->getRootNode();
+        $rootNode = $treeBuilder->root('routes');
 
         $rootNode
             ->addDefaultsIfNotSet()
             ->children()
-                ->scalarNode('adminlte_welcome')
-                    ->defaultValue('home')
-                    ->info('name of the homepage route')
-                ->end()
-                ->scalarNode('adminlte_login')
-                    ->defaultValue('login')
-                    ->info('name of the form login route')
-                ->end()
-                ->scalarNode('adminlte_login_check')
-                    ->defaultValue('login_check')
-                    ->info('name of the form login_check route')
-                ->end()
-                ->scalarNode('adminlte_registration')
-                    ->defaultNull()
-                    ->info('name of the user registration form route')
-                ->end()
-                ->scalarNode('adminlte_password_reset')
-                    ->defaultNull()
-                    ->info('name of the forgot-password form route')
-                ->end()
-                ->scalarNode('adminlte_message')
-                    ->defaultValue('message')
-                    ->info('name of the route to one message')
-                ->end()
-                ->scalarNode('adminlte_messages')
-                    ->defaultValue('messages')
-                    ->info('name of the route to all messages')
-                ->end()
-                ->scalarNode('adminlte_notification')
-                    ->defaultValue('notification')
-                    ->info('name of the route to one notification')
-                ->end()
-                ->scalarNode('adminlte_notifications')
-                    ->defaultValue('notifications')
-                    ->info('name of the route to all notification')
-                ->end()
-                ->scalarNode('adminlte_task')
-                    ->defaultValue('task')
-                    ->info('name of the route to one task')
-                ->end()
-                ->scalarNode('adminlte_tasks')
-                    ->defaultValue('tasks')
-                    ->info('name of the route to all tasks')
-                ->end()
-                ->scalarNode('adminlte_profile')
-                    ->defaultValue('profile')
-                    ->info('name of the route to the users profile')
-                ->end()
+            ->scalarNode('adminlte_welcome')
+            ->defaultValue('home')
+            ->info('name of the homepage route')
             ->end()
-        ->end();
+            ->scalarNode('adminlte_login')
+            ->defaultValue('login')
+            ->info('name of the form login route')
+            ->end()
+            ->scalarNode('adminlte_login_check')
+            ->defaultValue('login_check')
+            ->info('name of the form login_check route')
+            ->end()
+            ->scalarNode('adminlte_registration')
+            ->defaultNull()
+            ->info('name of the user registration form route')
+            ->end()
+            ->scalarNode('adminlte_password_reset')
+            ->defaultNull()
+            ->info('name of the forgot-password form route')
+            ->end()
+            ->scalarNode('adminlte_message')
+            ->defaultValue('message')
+            ->info('name of the route to one message')
+            ->end()
+            ->scalarNode('adminlte_messages')
+            ->defaultValue('messages')
+            ->info('name of the route to all messages')
+            ->end()
+            ->scalarNode('adminlte_notification')
+            ->defaultValue('notification')
+            ->info('name of the route to one notification')
+            ->end()
+            ->scalarNode('adminlte_notifications')
+            ->defaultValue('notifications')
+            ->info('name of the route to all notification')
+            ->end()
+            ->scalarNode('adminlte_task')
+            ->defaultValue('task')
+            ->info('name of the route to one task')
+            ->end()
+            ->scalarNode('adminlte_tasks')
+            ->defaultValue('tasks')
+            ->info('name of the route to all tasks')
+            ->end()
+            ->scalarNode('adminlte_profile')
+            ->defaultValue('profile')
+            ->info('name of the route to the users profile')
+            ->end()
+            ->end()
+            ->end();
 
         return $rootNode;
     }
@@ -114,25 +114,25 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder('knp_menu');
         /** @var ArrayNodeDefinition $rootNode */
-        $rootNode = $treeBuilder->getRootNode();
+        $rootNode = $treeBuilder->root('knp_menu');
 
         $rootNode
             ->addDefaultsIfNotSet()
             ->children()
-                ->booleanNode('enable')
-                    ->defaultFalse()
-                    ->info('')
-                ->end()
-                ->scalarNode('main_menu')
-                    ->defaultValue('adminlte_main')
-                    ->info('your builder alias')
-                ->end()
-                ->scalarNode('breadcrumb_menu')
-                    ->defaultFalse()
-                    ->info('Your builder alias or false to disable breadcrumbs')
-                ->end()
+            ->booleanNode('enable')
+            ->defaultFalse()
+            ->info('')
             ->end()
-        ->end();
+            ->scalarNode('main_menu')
+            ->defaultValue('adminlte_main')
+            ->info('your builder alias')
+            ->end()
+            ->scalarNode('breadcrumb_menu')
+            ->defaultFalse()
+            ->info('Your builder alias or false to disable breadcrumbs')
+            ->end()
+            ->end()
+            ->end();
 
         return $rootNode;
     }
@@ -141,45 +141,45 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder('widget');
         /** @var ArrayNodeDefinition $rootNode */
-        $rootNode = $treeBuilder->getRootNode();
+        $rootNode = $treeBuilder->root('widget');
 
         $rootNode
             ->addDefaultsIfNotSet()
             ->children()
-                ->scalarNode('collapsible_title')
-                    ->defaultValue('Collapse')
-                    ->info('')
-                ->end()
-                ->scalarNode('removable_title')
-                    ->defaultValue('Remove')
-                    ->info('')
-                ->end()
-                ->scalarNode('type')
-                    ->defaultValue('primary')
-                    ->info('')
-                ->end()
-                    ->booleanNode('bordered')
-                    ->defaultTrue()
-                    ->info('')
-                ->end()
-                    ->booleanNode('collapsible')
-                    ->defaultFalse()
-                    ->info('')
-                ->end()
-                ->booleanNode('removable')
-                    ->defaultFalse()
-                    ->info('')
-                ->end()
-                ->booleanNode('solid')
-                    ->defaultFalse()
-                    ->info('')
-                ->end()
-                ->booleanNode('use_footer')
-                    ->defaultTrue()
-                    ->info('')
-                ->end()
+            ->scalarNode('collapsible_title')
+            ->defaultValue('Collapse')
+            ->info('')
             ->end()
-        ->end();
+            ->scalarNode('removable_title')
+            ->defaultValue('Remove')
+            ->info('')
+            ->end()
+            ->scalarNode('type')
+            ->defaultValue('primary')
+            ->info('')
+            ->end()
+            ->booleanNode('bordered')
+            ->defaultTrue()
+            ->info('')
+            ->end()
+            ->booleanNode('collapsible')
+            ->defaultFalse()
+            ->info('')
+            ->end()
+            ->booleanNode('removable')
+            ->defaultFalse()
+            ->info('')
+            ->end()
+            ->booleanNode('solid')
+            ->defaultFalse()
+            ->info('')
+            ->end()
+            ->booleanNode('use_footer')
+            ->defaultTrue()
+            ->info('')
+            ->end()
+            ->end()
+            ->end();
 
         return $rootNode;
     }
@@ -188,21 +188,21 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder('button');
         /** @var ArrayNodeDefinition $rootNode */
-        $rootNode = $treeBuilder->getRootNode();
+        $rootNode = $treeBuilder->root('button');
 
         $rootNode
             ->addDefaultsIfNotSet()
             ->children()
-                ->scalarNode('type')
-                    ->defaultValue('primary')
-                    ->info('default button type')
-                ->end()
-                ->scalarNode('size')
-                    ->defaultFalse()
-                    ->info('default button size')
-                ->end()
+            ->scalarNode('type')
+            ->defaultValue('primary')
+            ->info('default button type')
             ->end()
-        ->end();
+            ->scalarNode('size')
+            ->defaultFalse()
+            ->info('default button size')
+            ->end()
+            ->end()
+            ->end();
 
         return $rootNode;
     }
@@ -211,15 +211,15 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder('theme');
         /** @var ArrayNodeDefinition $rootNode */
-        $rootNode = $treeBuilder->getRootNode();
+        $rootNode = $treeBuilder->root('theme');
 
         $rootNode
             ->addDefaultsIfNotSet()
             ->children()
-                ->append($this->getWidgetConfig())
-                ->append($this->getButtonConfig())
+            ->append($this->getWidgetConfig())
+            ->append($this->getButtonConfig())
             ->end()
-        ->end();
+            ->end();
 
         return $rootNode;
     }
@@ -228,61 +228,61 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder('options');
         /** @var ArrayNodeDefinition $rootNode */
-        $rootNode = $treeBuilder->getRootNode();
+        $rootNode = $treeBuilder->root('options');
 
         $rootNode
             ->addDefaultsIfNotSet()
             ->children()
-                ->scalarNode('default_avatar')
-                    ->defaultValue('bundles/adminlte/images/default_avatar.png')
-                ->end()
-                ->scalarNode('skin')
-                    ->defaultValue('skin-blue')
-                    ->info('see skin listing for viable options')
-                ->end()
-                ->scalarNode('form_theme')
-                    ->defaultValue('default')
-                    ->info('the form theme, must be one of: default, horizontal or null')
-                    ->validate()
-                        ->ifTrue(function ($value) {
-                            if (null === $value) {
-                                return false;
-                            }
-
-                            return !in_array($value, ['default', 'horizontal']);
-                        })
-                        ->thenInvalid('Invalid form_theme. Expected one of: "default", "horizontal" or null')
-                    ->end()
-                ->end()
-                ->booleanNode('fixed_layout')
-                    ->defaultFalse()
-                ->end()
-                ->booleanNode('boxed_layout')
-                    ->defaultFalse()
-                    ->info('these settings relate directly to the "Layout Options"')
-                ->end()
-                ->booleanNode('collapsed_sidebar')
-                    ->defaultFalse()
-                    ->info('described in the documentation')
-                ->end()
-                ->booleanNode('mini_sidebar')
-                    ->defaultFalse()
-                    ->info('')
-                ->end()
-                ->integerNode('max_navbar_notifications')
-                    ->defaultValue(10)
-                    ->info('Max number of notifications displayed in the notification bar')
-                ->end()
-                ->integerNode('max_navbar_tasks')
-                    ->defaultValue(10)
-                    ->info('Max number of tasks displayed in the notification bar')
-                ->end()
-                ->integerNode('max_navbar_messages')
-                    ->defaultValue(10)
-                    ->info('Max number of messages displayed in the notification bar')
-                ->end()
+            ->scalarNode('default_avatar')
+            ->defaultValue('bundles/adminlte/images/default_avatar.png')
             ->end()
-        ->end();
+            ->scalarNode('skin')
+            ->defaultValue('skin-blue')
+            ->info('see skin listing for viable options')
+            ->end()
+            ->scalarNode('form_theme')
+            ->defaultValue('default')
+            ->info('the form theme, must be one of: default, horizontal or null')
+            ->validate()
+            ->ifTrue(function ($value) {
+                if (null === $value) {
+                    return false;
+                }
+
+                return !in_array($value, ['default', 'horizontal']);
+            })
+            ->thenInvalid('Invalid form_theme. Expected one of: "default", "horizontal" or null')
+            ->end()
+            ->end()
+            ->booleanNode('fixed_layout')
+            ->defaultFalse()
+            ->end()
+            ->booleanNode('boxed_layout')
+            ->defaultFalse()
+            ->info('these settings relate directly to the "Layout Options"')
+            ->end()
+            ->booleanNode('collapsed_sidebar')
+            ->defaultFalse()
+            ->info('described in the documentation')
+            ->end()
+            ->booleanNode('mini_sidebar')
+            ->defaultFalse()
+            ->info('')
+            ->end()
+            ->integerNode('max_navbar_notifications')
+            ->defaultValue(10)
+            ->info('Max number of notifications displayed in the notification bar')
+            ->end()
+            ->integerNode('max_navbar_tasks')
+            ->defaultValue(10)
+            ->info('Max number of tasks displayed in the notification bar')
+            ->end()
+            ->integerNode('max_navbar_messages')
+            ->defaultValue(10)
+            ->info('Max number of messages displayed in the notification bar')
+            ->end()
+            ->end()
+            ->end();
 
         return $rootNode;
     }
@@ -291,18 +291,18 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder('control_sidebar');
         /** @var ArrayNodeDefinition $rootNode */
-        $rootNode = $treeBuilder->getRootNode();
+        $rootNode = $treeBuilder->root('control_sidebar');
 
         $rootNode
             ->arrayPrototype()
-                ->children()
-                    ->scalarNode('icon')->end()
-                    ->scalarNode('controller')->end()
-                    ->scalarNode('template')->end()
-                ->end()
+            ->children()
+            ->scalarNode('icon')->end()
+            ->scalarNode('controller')->end()
+            ->scalarNode('template')->end()
+            ->end()
             ->end()
             ->info('controls all panels in the right control_sidebar')
-        ->end();
+            ->end();
 
         return $rootNode;
     }
